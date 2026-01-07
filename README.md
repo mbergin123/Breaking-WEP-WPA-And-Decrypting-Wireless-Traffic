@@ -27,105 +27,100 @@ This project showcases real-world wireless penetration testing methodology and e
 
 ---
 
-## 🖥️ Lab Topology
-![Topology](WEPTOP.png)
-
----
-
 ## 📑 Activity Log – Step-by-Step Documentation
 
 Step 1 — Lab Topology Identified  
 Reviewed the Kali Linux wireless analysis environment.  
-Screenshot: WEPTOP.png
+![Topology](images/WEPTOP.png)
 
 Step 2 — Checked Wireless Interface Extensions  
 Command used: iwconfig  
-Screenshot: iwconfig_no_wireless.png
+![iwconfig command](images/StartIW.png)
 
 Step 3 — Viewed Airmon-ng Options  
 Command used: airmon-ng --help  
-Screenshot: StartAir.png
+![Airmon Command](images/StartAir.png)
 
 Step 4 — Viewed Aircrack-ng Options  
 Command used: aircrack-ng  
-Screenshot: StartAirCrack.png
+![Airecrack Command](images/StartAirCrack.png)
 
 Step 5 — Viewed Airdecap-ng Options  
 Command used: airdecap-ng  
-Screenshot: startairdecap.png
+![Airdecap Command](images/startairedecap.png)
 
 Step 6 — Listed Files in Working Directory  
 Command used: ls  
-Screenshot: lskali.png
+![LSCommand](images/lskali.png)
 
 Step 7 — Retrieved Flag 1  
 Command used: cat sampleflag.txt  
 Flag 1: 999818  
-Screenshot: FirstFlagXXX.png
+![First Flag](images/FirstFlagXXX.png)
 
 Step 8 — Retrieved Flag 2  
 Command used: cat flag2.txt  
 Flag 2: 555616  
-Screenshot: SecondFlagXXX.png
+![SecondFlag](images/SecondFlagXXX.png)
 
 Step 9 — Opened WEP Capture in Wireshark  
 Command used: wireshark wepcapture.cap  
-Screenshot: WebCap.png
+![Wireshark](images/WebCap.png)
 
 Step 10 — Verified No IP Traffic Before Decryption  
 Wireshark filter applied: ip  
-Screenshot: NOIP.png
+![No IP Address](images/NOIP.png)
 
 Step 11 — Began WEP Key Cracking  
 Command used: aircrack-ng wepcapture.cap  
-Screenshot: aircrackwep.png
+![aircrack](images/aircrackwep.png)
 
 Step 12 — WEP Key Recovered  
 Recovered key: 39:80:35:D5:9C  
-Screenshot: keyFound.png
+![Recovered Key](images/keyFound.png)
 
 Step 13 — Decrypted WEP Traffic  
 Command used: airdecap-ng -w 39:B0:35:D5:9C wepcapture.cap  
-Screenshot: decryptWEP.png
+![airdecap](images/decryptWEP.png)
 
 Step 14 — Verified Decrypted WEP File  
 Command used: ls  
 New file found: wepcapture-dec.cap  
-Screenshot: decNewFile.png
+![New File Found](images/decNewFile.png)
 
 Step 15 — Verified IP Visibility After WEP Decryption  
 Wireshark filter applied: ip  
-Screenshot: SeeIP.png
+![IP is Visible](images/SeeIP.png)
 
 Step 16 — Recovered Plaintext FTP Password (WEP)  
 Recovered password: PACERS123  
-Screenshot: PACERS123.png
+![Recovered Password](images/PACERS123.png)
 
 Step 17 — Retrieved Flag 3 from DNS Traffic  
 Wireshark filter applied: dns and frame contains "flag"  
 Flag 3: 888912  
-Screenshot: Flag3Found.png
+![Flag 3 Found](images/Flag3Found.png)
 
 Step 18 — Viewed Plaintext POP3 Email (WEP)  
 Recovered email content in plaintext.  
-Screenshot: Clevland.png
+![Clevland Picture](images/Clevland.png)
 
 Step 19 — Retrieved Flag 4 from Telnet Traffic  
 Flag 4: 876554  
-Screenshot: Flag4Found.png
+![Flag 4 Found](images/Flag4Found.png)
 
 Step 20 — Retrieved Flag 5 from QOTD Traffic  
 Wireshark filter applied: tcp.port == 17  
 Flag 5: 818344  
-Screenshot: Flag5Found.png
+![Flag 5 found](images/Flag5Found.png)
 
 Step 21 — Retrieved Flag 6 from Next TCP Stream  
 Flag 6: 555344  
-Screenshot: Flag6Found.png
+![Flag 6 Found](images/Flag6Found.png)
 
 Step 22 — Exported HTTP Objects (WEP)  
 Recovered Cleveland Cavaliers images via HTTP export.  
-Screenshot: ClevelandPhotos.png
+![Recovered Cleveland Photos](images/ClevelandPhotos.png)
 
 ---
 
@@ -133,43 +128,43 @@ Screenshot: ClevelandPhotos.png
 
 Step 23 — Verified Export Folder Exists  
 Confirmed exported wep folder.  
-Screenshot: weplisted.png
+![Web Listed](images/weplisted.png)
 
 Step 24 — Opened WPA Capture and Verified Encryption  
 Command used: wireshark wpacapture.cap  
 Wireshark filter applied: ip  
 No IP traffic visible.  
-Screenshot: NOIP2.png
+![NO IP Address](images/NOIP2.png)
 
 Step 25 — Performed WPA Dictionary Attack  
 Command used: aircrack-ng wpacapture.cap -w Wordlist.txt  
 Recovered WPA passphrase: boneless  
-Screenshot: Boneless.png
+![Recovered Password](images/Boneless.png)
 
 Step 26 — Decrypted WPA Traffic  
 Command used: airdecap-ng -e SECURETWO -p boneless wpacapture.cap  
 New file created: wpacapture-dec.cap  
-Screenshot: aircrackNewFile.png
+![airedecap command](images/aircrackNewFile.png)
 
 Step 27 — Verified WPA Decryption in Wireshark  
 Wireshark filter applied: ip  
-Screenshot: SeeIP2.png
+![Second Round of IPs are Visable](images/SeeIP2.png)
 
 Step 28 — Recovered Plaintext FTP Credentials (WPA)  
 Recovered password: P@ssw0rd  
-Screenshot: FTPPass.png
+![Password Recovered](images/FTPPass.png)
 
 Step 29 — Viewed Plaintext POP3 Credentials (WPA)  
 POP3 credentials visible in plaintext.  
-Screenshot: popPass.png
+![POP3](images/popPass.png)
 
 Step 30 — Reconstructed POP3 Email Content (WPA)  
 Recovered plaintext email discussing the San Antonio Spurs.  
-Screenshot: SanEmail.png
+![San Antonio Email](images/sanemail.png)
 
 Step 31 — Exported HTTP Objects (WPA)  
 Exported HTTP objects and recovered San Antonio Spurs images.  
-Screenshot: SanImages.png
+![San Antonio Images](images/SanImages.png)
 
 ---
 
